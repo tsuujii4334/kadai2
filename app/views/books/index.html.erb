@@ -1,20 +1,23 @@
 
-<h1>Books</h1>
+<h1>Books</h1><!--閲覧部分-->
 <p>Title</p>
-<%= @book.each do |book| %>
- <p>Body</p>
+<p>Body</p>
+<% @books.each do |book| %>
  <span><%= book.title %></span>
  <span><%= book.body %></span>
+ <a href=books/show>Show</a>
+ <a href=books/edit>Edit</a>
+ <a>Destroy</a>
 <% end %>
 
-<h2>New book</h2>
-<%= form_with model: @book, url: '/books',method: :post do |book| %>
+<h2>New book</h2><!--投稿部分-->
+<%= form_with model: @books, url: '/books',method: :post do |book| %>
   <p>Title</p>
   <%= book.text_field :title %>
-  
+
   <p>Body</p>
   <%= book.text_area :body %>
-  
+
   <%= book.submit 'Create Book' %>
 <% end %>
 
