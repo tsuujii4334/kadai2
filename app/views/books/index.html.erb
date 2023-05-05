@@ -5,8 +5,8 @@
 <% @books.each do |book| %>
  <span><%= book.title %></span>
  <span><%= book.body %></span>
- <a href=books/show>Show</a>
- <a href=books/edit>Edit</a>
+ <%= link_to "Show", "/books/#{book.id}" %>
+ <%= link_to "Edit", "/books/#{book.id}" %
  <a>Destroy</a>
 <% end %>
 
