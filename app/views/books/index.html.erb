@@ -1,13 +1,14 @@
 
-<h1>Books</h1><!--閲覧部分-->
+<h1>Books</h1><!--一覧部分-->
 <p>Title</p>
 <p>Body</p>
 <% @books.each do |book| %>
  <span><%= book.title %></span>
  <span><%= book.body %></span>
- <%= link_to "Show", "/books/#{book.id}" %>
- <%= link_to "Edit", edit_book_path(@book.id) %>
- <a>Destroy</a>
+ <%= link_to "Show", book_path(book.id) %>
+ <%= link_to "Edit", edit_book_path(book.id) %>
+ <%= link_to "Destroy", destroy_book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %> 
+
 <% end %>
 
 <h2>New book</h2><!--投稿部分-->
