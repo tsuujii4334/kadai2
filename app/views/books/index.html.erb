@@ -21,7 +21,7 @@
   </ul>
 <% end %>
 
-<%= form_with model: @books, url: '/books',method: :post do |book| %><!--投稿箇所-->
+<%= form_with model: @book, url: '/books',method: :post do |book| %><!--投稿箇所-->
   <p>Title</p>
   <%= book.text_field :title %>
 
