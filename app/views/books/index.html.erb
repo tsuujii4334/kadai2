@@ -1,15 +1,23 @@
 
 <h1>Books</h1><!--一覧部分-->
-<th>Title</th>
-<th>Body</th>
-<% @books.each do |book| %>
- <span><%= book.title %></span>
- <span><%= book.body %></span>
- <%= link_to "Show", book_path(book.id) %>
- <%= link_to "Edit", edit_book_path(book.id) %>
- <%= link_to "Destroy", destroy_book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %> 
-<br>
-<% end %>
+<table>
+  <thead>
+    <tr>
+     <th>Title</th>
+     <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @books.each do |book| %>
+   <span><%= book.title %></span>
+   <span><%= book.body %></span>
+   <%= link_to "Show", book_path(book.id) %>
+   <%= link_to "Edit", edit_book_path(book.id) %>
+   <%= link_to "Destroy", destroy_book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %> 
+   <br>
+   <% end %>
+  </tbody>
+</table>
 
 <h2>New book</h2><!--投稿部分-->
 <% if @book.errors.any? %><!--バリデーションによるエラーメッセージの表示-->
@@ -22,12 +30,19 @@
 <% end %>
 
 <%= form_with model: @book, url: '/books',method: :post do |book| %><!--投稿箇所-->
-  <p>Title</p>
-  <%= book.text_field :title %>
+  
+  <div class="field">
+    <p>Title</p>
+    <%= book.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <p>Body</p>
+    <%= book.text_area :body %>
+  </div>
 
-  <p>Body</p>
-  <%= book.text_area :body %>
-
+  <div class="actions">
   <%= book.submit 'Create Book' %>
+  </div>
 <% end %>
 
